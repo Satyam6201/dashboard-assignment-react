@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import Dashboard from "./components/Dashboard";
 
-function App() {
+const App = () => {
+  const [darkMode, setDarkMode] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className={`app-container ${darkMode ? "dark" : ""}`}>
+      <header className="app-header">
+        <h1 className="title">📊 Executive Dashboard</h1>
+        <button className="theme-toggle" onClick={() => setDarkMode(!darkMode)}>
+          {darkMode ? "☀️ Light Mode" : "🌙 Dark Mode"}
+        </button>
       </header>
+      <Dashboard />
     </div>
   );
-}
+};
 
 export default App;
